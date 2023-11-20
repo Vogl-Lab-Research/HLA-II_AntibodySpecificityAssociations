@@ -35,7 +35,7 @@ def add_pred_score(df_signal):
 
 def add_signalp6(df_agilent, threshold = 0.85):
     # Extract info from signalp6 file (TODO: add it in data folder)
-    signalp6_slow = pd.read_csv('signalp6_slow.txt', sep='\t')
+    signalp6_slow = pd.read_csv('data/signalp6_slow.txt', sep='\t')
     signalp6_slow = add_pred_score(signalp6_slow)
     secreted_slow = signalp6_slow[(signalp6_slow['Prediction'] != 'OTHER') & 
                               (signalp6_slow['Prediction Score'] >= threshold)]['# ID']
@@ -58,9 +58,9 @@ def add_flagellum(df_agilent, all_columns=True):
 
 def add_toxin(df_agilent):
     # Toxins: diamond+mmseqs2 predictions
-    diamond_res_tox = pd.read_table('diamond_mmseqs/toxin/matches_toxin_SV.tsv', sep='\t',
+    diamond_res_tox = pd.read_table('data/matches_toxin_SV.tsv', sep='\t',
                                 header=None)
-    mmseqs_res_tox = pd.read_table('diamond_mmseqs/toxin/mmseqs_res.tsv', sep='\t',
+    mmseqs_res_tox = pd.read_table('data/mmseqs_res.tsv', sep='\t',
                                 header=None)
     mmseqs_res_tox.columns = diamond_res_tox.columns = ['query_accession', 'target_accession',
                        'seq_identity', 'length',
@@ -81,7 +81,7 @@ def add_toxin(df_agilent):
 def add_membrane_prot(df_agilent):
 
     # Topgraph membrane protein prediction tool
-    topgraph_res = pd.read_csv('membrane_prediction/final_out_topgraph.tsv', sep='\t',header=None)
+    topgraph_res = pd.read_csv('data/final_out_topgraph.tsv', sep='\t',header=None)
     topgraph_res.columns = ['protein_name', 'is_topgraph']
     topgraph_pos_prot = topgraph_res[topgraph_res['is_topgraph'] == 1] #['protein_name']
     df_agilent['is_topgraph_new'] = np.where(df_agilent['prot_num'].isin(topgraph_pos_prot['protein_name']), 1,0)

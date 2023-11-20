@@ -453,7 +453,7 @@ def create_relative_abund_plots_single(list_of_subsets,
             ax.set_ylim(0,3)
         else:
             ax.set_ylim(0, ax.get_ylim()[1] + 2)
-        savefile = 'Figures_paper/' + title + '.png'
+        savefile = title + '.png'
         #plt.grid(color='gainsboro', linestyle='-', linewidth=1)
         plt.savefig(savefile,
             facecolor='white',
@@ -556,7 +556,7 @@ def plot_species(subsets_concat, list_subsets, colormap, groups, titlelist=None)
         #print({c:colormap[c] for c in set(whole_df_filt['reformatted_name'])})
         # New index order
         # Name each file:
-        filename = 'Analysis_on_Species_and_Classes/Species_differences_stckd_bar' + i + '.png'
+        filename = 'Species_differences_stckd_bar' + i + '.png'
         fig, ax = plt.subplots(1, figsize=(4,3))
         subset_wide_perc.plot(kind='bar', stacked=True,\
         ax=ax, edgecolor='black', cmap=cimap, label=title, alpha=0.5)
