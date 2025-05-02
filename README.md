@@ -1,6 +1,6 @@
 # HLA-II_AntibodySpecificityAssociations
 
-This repository contains the code (scripts and notebooks) used for the paper "Antigen properties predict genetic associations between antibody specificity and HLA-II variation".
+This repository contains the code (scripts and notebooks) used for the paper "Associations between HLA-II variation and antibody specificity are predicted by antigen properties".
 
 ## Additional code
 ### PhIP-seq normalization and enriched peptides detection:
